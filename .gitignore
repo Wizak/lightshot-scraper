@@ -1,0 +1,7 @@
+.git
+.idea
+LightLoader.spec
+/Output
+/venv
+/build
+/dist
