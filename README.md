@@ -1,4 +1,4 @@
-# Start development
+# Get started development
 
 ---
 ```
@@ -8,7 +8,7 @@ pip install -r requirements.txt
 python LightLoader.py
 ```
 ---
-# Start compile
+# Get started compilation
 ---
 ```
 pyinstaller --onefile --icon=app.ico LightLoader.py
