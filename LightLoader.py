@@ -10,7 +10,6 @@ import requests
 import time
 
 
-# - Output folder name.
 DIRNAME = "Output"
 DLCOUNT = 0
 ERCOUNT = 0
@@ -33,17 +32,14 @@ class LightLoader(threading.Thread):
                 fmt_filename = ''.join((fileName, '.png'))
                 console.log(f"[green]Finish scraping data[/green] {fmt_filename}")
 
-    # - Generates lightshot link using generateId() function
     def generateLink(self, fileName):
         return "https://prnt.sc/" + fileName
 
 
-    # - Generates random string
     def generateId(self, size):
         return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(size))
 
 
-    # - Downloads HTML File from link previously generated
     def generateHtml(self, fileName):
         url = self.generateLink(fileName)
         request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -52,7 +48,6 @@ class LightLoader(threading.Thread):
         return page
 
 
-    # - Looks for raw image link in HTML File
     def generateImgur(self, url, fileName):
         soup = BeautifulSoup(self.generateHtml(fileName), 'html.parser')
         imgUrl = soup.find('img', id='screenshot-image')['src']
@@ -82,11 +77,9 @@ class LightLoader(threading.Thread):
 
 
 def main():
-    # - Creates "Output" folder if not present
     if not os.path.exists(DIRNAME):
         os.makedirs(DIRNAME)
         
-    # threads_count = int(input("Input number of threads to be used: "))
     threads_count = 5
     for t in range(threads_count):
         thread = LightLoader()
